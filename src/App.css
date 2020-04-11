@@ -21,6 +21,8 @@ th {
 }
 
 .tableContainer {
+  /* display: flex;
+  justify-content: center; */
   width: 100%;
 }
 
@@ -37,6 +39,11 @@ th {
 table {
   border-collapse: collapse;
   width: 100%;
+}
+
+.linkArrow {
+  max-height: 40px;
+  display: none;
 }
 
 .bakerloo {
@@ -92,4 +99,24 @@ table {
 .waterloo-city {
   background-color: #76d0bd;
   color: black;
+}
+
+/* css for mobile devices */
+@media only screen and (max-width: 667px) {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .widgetContainer {
+    margin: 0px;
+  }
+
+  .linkText {
+    display: none;
+  }
+
+  .linkArrow {
+    display: block;
+  }
 }

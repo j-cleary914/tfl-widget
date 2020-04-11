@@ -3,6 +3,8 @@ import axios from "axios";
 import { formatDate } from "../functions";
 import Table from "./Table";
 import { Router, Link } from "@reach/router";
+import LineInfo from "./LineInfo";
+import arrow from "../arrow.svg";
 
 class Travel extends Component {
   state = {
@@ -52,6 +54,7 @@ class Travel extends Component {
           <td>
             <Link to={`/travel/${id}`}>
               <p className="linkText">View More</p>
+              <img src={arrow} className="linkArrow" />
             </Link>
           </td>
         </tr>
@@ -78,6 +81,7 @@ class Travel extends Component {
             renderTableData={this.renderTableData}
             tubeLineStatuses={this.state.tubeLineStatuses}
           />
+          <LineInfo path="/:id" lineStatuses={this.state.tubeLineStatuses} />
         </Router>
       </div>
     );
