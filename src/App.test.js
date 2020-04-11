@@ -1,9 +1,6 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { formatDate } from "./functions";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("formatDate pads tricky dates with 0's correctly", () => {
+  let testDate = new Date("January 1, 2020, 08:05:00");
+  expect(formatDate(testDate)).toEqual("1/1/2020 - 08:05");
 });

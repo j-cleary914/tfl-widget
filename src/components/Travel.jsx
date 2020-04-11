@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { formatDate } from "../functions";
 
 class Travel extends Component {
   state = {
@@ -28,7 +29,8 @@ class Travel extends Component {
 
   fetchDate() {
     const now = new Date();
-    this.setState({ lastUpdatedString: now });
+    const lastUpdatedString = formatDate(now);
+    this.setState({ lastUpdatedString });
   }
 
   componentDidMount() {
