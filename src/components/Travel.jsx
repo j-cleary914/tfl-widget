@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { formatDate } from "../functions";
+import Table from "./Table";
+import { Router, Link } from "@reach/router";
 
 class Travel extends Component {
   state = {
@@ -24,6 +26,7 @@ class Travel extends Component {
         });
 
         this.setState({ tubeLineStatuses });
+        console.log(tubeLineStatuses);
       });
   }
 
@@ -31,17 +34,51 @@ class Travel extends Component {
     const now = new Date();
     const lastUpdatedString = formatDate(now);
     this.setState({ lastUpdatedString });
+    console.log(lastUpdatedString);
+  }
+
+  refreshData() {
+    console.log("trying to refresh data...");
+    window.location.reload(false);
+  }
+
+  renderTableData(tubeLineStatuses) {
+    return tubeLineStatuses.map(tubeLine => {
+      const { id, tubeLineName, tubeLineStatus } = tubeLine;
+      return (
+        <tr key={id}>
+          <td className={id}>{tubeLineName}</td>
+          <td>{tubeLineStatus}</td>
+          <td>
+            <Link to={`/travel/${id}`}>
+              <p className="linkText">View More</p>
+            </Link>
+          </td>
+        </tr>
+      );
+    });
   }
 
   componentDidMount() {
+    console.log("componentDidMount from Travel.jsx firing !");
     this.fetchData();
     this.fetchDate();
   }
 
   render() {
     return (
-      <div>
-        <p>Ah, the home of my new widget :)</p>
+      <div className="widgetContainer">
+        <div className="widgetHeader">
+          <p>last updated: {this.state.lastUpdatedString}</p>
+          <button onClick={this.refreshData}>Refresh Data</button>
+        </div>
+        <Router>
+          <Table
+            path="/"
+            renderTableData={this.renderTableData}
+            tubeLineStatuses={this.state.tubeLineStatuses}
+          />
+        </Router>
       </div>
     );
   }
