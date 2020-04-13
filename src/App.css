@@ -116,13 +116,44 @@ table {
   color: black;
 }
 
+.refreshButton {
+  width: 150px;
+  box-shadow: inset 0px 1px 0px 0px #97c4fe;
+  color: white;
+  background-color: #3894d3;
+  border-radius: 6px;
+  border: 1px solid #337fed;
+  font-size: 15px;
+}
+
+.refreshButtonText {
+  margin: auto;
+}
+
+.refreshButtonDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
 .rotate {
   animation: rotation 0.8s linear infinite;
-  max-height: 35px;
+  max-height: 30px;
 }
 
 .still {
   max-height: 35px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: rotation 2s linear infinite;
+  position: absolute;
+  left: 40%;
+  top: 30%;
 }
 
 @keyframes rotation {

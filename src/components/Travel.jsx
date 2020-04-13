@@ -11,7 +11,8 @@ class Travel extends Component {
   state = {
     tubeLineStatuses: [],
     lastUpdatedString: "",
-    refreshIconRotation: "still"
+    refreshIconRotation: "still",
+    isLoading: true
   };
 
   fetchData = () => {
@@ -31,7 +32,7 @@ class Travel extends Component {
 
         this.setState({ tubeLineStatuses });
         this.setState({ refreshIconRotation: "still" });
-        console.log("still");
+        this.setState({ isLoading: false });
       });
   };
 
@@ -49,7 +50,6 @@ class Travel extends Component {
 
   spinIcon = () => {
     this.setState({ refreshIconRotation: "rotate" });
-    console.log("rotate");
   };
 
   renderTableData = tubeLineStatuses => {
@@ -71,12 +71,13 @@ class Travel extends Component {
   };
 
   componentDidMount = () => {
-    console.log("componentDidMount from Travel.jsx firing !");
     this.fetchData();
     this.fetchDate();
   };
 
   render() {
+    const { isLoading } = this.state;
+    if (isLoading) return <div className="loader" />;
     return (
       <div className="widgetAligner">
         <div className="widgetContainer">
@@ -84,14 +85,14 @@ class Travel extends Component {
             <p style={{ padding: "0px 8px" }}>
               last updated: {this.state.lastUpdatedString}
             </p>
-            <button onClick={this.refreshData}>
-              <div>
+            <button className="refreshButton" onClick={this.refreshData}>
+              <div className="refreshButtonDiv">
                 <img
                   src={refresh_icon}
                   className={this.state.refreshIconRotation}
                   alt="refrish icon"
                 />
-                <p>Refresh Data</p>
+                <p className="refreshButtonText">Refresh</p>
               </div>
             </button>
           </div>
