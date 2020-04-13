@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <p>
         Click the button below to naviage to /travel and load the travel widget!
       </p>

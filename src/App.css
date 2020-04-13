@@ -21,14 +21,18 @@ th {
 }
 
 .tableContainer {
-  /* display: flex;
-  justify-content: center; */
   width: 100%;
+}
+
+.widgetAligner {
+  display: flex;
+  justify-content: center;
 }
 
 .widgetContainer {
   background-color: #f7f7f7;
   margin: 20px;
+  width: 700px;
 }
 
 .widgetHeader {
@@ -43,6 +47,12 @@ table {
 
 .linkArrow {
   max-height: 40px;
+  display: none;
+}
+
+.linkArrowReverse {
+  max-height: 40px;
+  transform: rotate(180deg);
   display: none;
 }
 
@@ -117,6 +127,10 @@ table {
   }
 
   .linkArrow {
+    display: block;
+  }
+
+  .linkArrowReverse {
     display: block;
   }
 }

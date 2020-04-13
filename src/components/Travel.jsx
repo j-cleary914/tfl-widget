@@ -70,19 +70,21 @@ class Travel extends Component {
 
   render() {
     return (
-      <div className="widgetContainer">
-        <div className="widgetHeader">
-          <p>last updated: {this.state.lastUpdatedString}</p>
-          <button onClick={this.refreshData}>Refresh Data</button>
+      <div className="widgetAligner">
+        <div className="widgetContainer">
+          <div className="widgetHeader">
+            <p>last updated: {this.state.lastUpdatedString}</p>
+            <button onClick={this.refreshData}>Refresh Data</button>
+          </div>
+          <Router>
+            <Table
+              path="/"
+              renderTableData={this.renderTableData}
+              tubeLineStatuses={this.state.tubeLineStatuses}
+            />
+            <LineInfo path="/:id" lineStatuses={this.state.tubeLineStatuses} />
+          </Router>
         </div>
-        <Router>
-          <Table
-            path="/"
-            renderTableData={this.renderTableData}
-            tubeLineStatuses={this.state.tubeLineStatuses}
-          />
-          <LineInfo path="/:id" lineStatuses={this.state.tubeLineStatuses} />
-        </Router>
       </div>
     );
   }

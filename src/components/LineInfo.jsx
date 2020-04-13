@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
+import arrow from "../arrow.svg";
+import { findByLabelText } from "@testing-library/dom";
 
 const LineInfo = props => {
   const tubeLine = props.lineStatuses.find(
@@ -24,7 +26,12 @@ const LineInfo = props => {
       </table>
 
       <Link to="/travel">
-        <p style={{ textAlign: "center" }}>go back</p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <p className="linkText" style={{ textAlign: "center" }}>
+            go back
+          </p>
+          <img src={arrow} className="linkArrowReverse" />
+        </div>
       </Link>
     </div>
   );
