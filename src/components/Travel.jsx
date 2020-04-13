@@ -11,7 +11,7 @@ class Travel extends Component {
   state = {
     tubeLineStatuses: [],
     lastUpdatedString: "",
-    isSpinning: "still"
+    refreshIconRotation: "still"
   };
 
   fetchData = () => {
@@ -30,7 +30,8 @@ class Travel extends Component {
         });
 
         this.setState({ tubeLineStatuses });
-        this.setState({ isSpinning: "still" });
+        this.setState({ refreshIconRotation: "still" });
+        console.log("still");
       });
   };
 
@@ -47,7 +48,8 @@ class Travel extends Component {
   };
 
   spinIcon = () => {
-    this.setState({ isSpinning: "rotate" });
+    this.setState({ refreshIconRotation: "rotate" });
+    console.log("rotate");
   };
 
   renderTableData = tubeLineStatuses => {
@@ -86,8 +88,7 @@ class Travel extends Component {
               <div>
                 <img
                   src={refresh_icon}
-                  className="refreshIcon"
-                  className={this.state.isSpinning}
+                  className={this.state.refreshIconRotation}
                   alt="refrish icon"
                 />
                 <p>Refresh Data</p>

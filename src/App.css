@@ -61,11 +61,6 @@ table {
   display: none;
 }
 
-.refreshIcon {
-  max-height: 30px;
-  transform: rotate(360deg);
-}
-
 .bakerloo {
   background-color: #894e24;
   color: white;
@@ -123,14 +118,19 @@ table {
 
 .rotate {
   animation: rotation 0.8s linear infinite;
+  max-height: 35px;
+}
+
+.still {
+  max-height: 35px;
 }
 
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
+    transform: rotate(359deg);
   }
   to {
-    transform: rotate(-359deg);
+    transform: rotate(0deg);
   }
 }
 
