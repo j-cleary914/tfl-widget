@@ -40,6 +40,7 @@ th {
 }
 
 .widgetHeader {
+  /* height: 45px; */
   display: flex;
   justify-content: space-between;
 }
@@ -58,6 +59,11 @@ table {
   max-height: 40px;
   transform: rotate(180deg);
   display: none;
+}
+
+.refreshIcon {
+  max-height: 30px;
+  transform: rotate(360deg);
 }
 
 .bakerloo {
@@ -113,6 +119,19 @@ table {
 .waterloo-city {
   background-color: #76d0bd;
   color: black;
+}
+
+.rotate {
+  animation: rotation 0.8s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
 }
 
 /* css for mobile devices */

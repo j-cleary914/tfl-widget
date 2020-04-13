@@ -29,7 +29,11 @@ const LineInfo = props => {
           <p className="linkText" style={{ textAlign: "center" }}>
             go back
           </p>
-          <img src={arrow} className="linkArrowReverse" />
+          <img
+            src={arrow}
+            className={"linkArrowReverse"}
+            alt="chevron link icon"
+          />
         </div>
       </Link>
     </div>

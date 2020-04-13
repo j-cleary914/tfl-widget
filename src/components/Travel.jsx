@@ -5,11 +5,13 @@ import Table from "./Table";
 import { Router, Link } from "@reach/router";
 import LineInfo from "./LineInfo";
 import arrow from "../arrow.svg";
+import refresh_icon from "../refresh.svg";
 
 class Travel extends Component {
   state = {
     tubeLineStatuses: [],
-    lastUpdatedString: ""
+    lastUpdatedString: "",
+    isSpinning: "still"
   };
 
   fetchData = () => {
@@ -28,7 +30,7 @@ class Travel extends Component {
         });
 
         this.setState({ tubeLineStatuses });
-        console.log(tubeLineStatuses);
+        this.setState({ isSpinning: "still" });
       });
   };
 
@@ -36,13 +38,16 @@ class Travel extends Component {
     const now = new Date();
     const lastUpdatedString = formatDate(now);
     this.setState({ lastUpdatedString });
-    console.log(lastUpdatedString);
   };
 
   refreshData = () => {
-    console.log("trying to refresh data...");
     this.fetchDate();
     this.fetchData();
+    this.spinIcon();
+  };
+
+  spinIcon = () => {
+    this.setState({ isSpinning: "rotate" });
   };
 
   renderTableData = tubeLineStatuses => {
@@ -55,7 +60,7 @@ class Travel extends Component {
           <td>
             <Link to={`/travel/${id}`}>
               <p className="linkText">View More</p>
-              <img src={arrow} className="linkArrow" />
+              <img src={arrow} className="linkArrow" alt="chevron link icon" />
             </Link>
           </td>
         </tr>
@@ -77,7 +82,17 @@ class Travel extends Component {
             <p style={{ padding: "0px 8px" }}>
               last updated: {this.state.lastUpdatedString}
             </p>
-            <button onClick={this.refreshData}>Refresh Data</button>
+            <button onClick={this.refreshData}>
+              <div>
+                <img
+                  src={refresh_icon}
+                  className="refreshIcon"
+                  className={this.state.isSpinning}
+                  alt="refrish icon"
+                />
+                <p>Refresh Data</p>
+              </div>
+            </button>
           </div>
           <Router>
             <Table
