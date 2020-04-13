@@ -12,7 +12,7 @@ class Travel extends Component {
     lastUpdatedString: ""
   };
 
-  fetchData() {
+  fetchData = () => {
     axios
       .get(
         "https://api.tfl.gov.uk/Line/Mode/tube/Status?app_id=cdf2be4d&app_key=2c620fbd67b0fe7202e99b15a97419d6"
@@ -30,21 +30,22 @@ class Travel extends Component {
         this.setState({ tubeLineStatuses });
         console.log(tubeLineStatuses);
       });
-  }
+  };
 
-  fetchDate() {
+  fetchDate = () => {
     const now = new Date();
     const lastUpdatedString = formatDate(now);
     this.setState({ lastUpdatedString });
     console.log(lastUpdatedString);
-  }
+  };
 
-  refreshData() {
+  refreshData = () => {
     console.log("trying to refresh data...");
-    window.location.reload(false);
-  }
+    this.fetchDate();
+    this.fetchData();
+  };
 
-  renderTableData(tubeLineStatuses) {
+  renderTableData = tubeLineStatuses => {
     return tubeLineStatuses.map(tubeLine => {
       const { id, tubeLineName, tubeLineStatus } = tubeLine;
       return (
@@ -60,20 +61,22 @@ class Travel extends Component {
         </tr>
       );
     });
-  }
+  };
 
-  componentDidMount() {
+  componentDidMount = () => {
     console.log("componentDidMount from Travel.jsx firing !");
     this.fetchData();
     this.fetchDate();
-  }
+  };
 
   render() {
     return (
       <div className="widgetAligner">
         <div className="widgetContainer">
           <div className="widgetHeader">
-            <p>last updated: {this.state.lastUpdatedString}</p>
+            <p style={{ padding: "0px 8px" }}>
+              last updated: {this.state.lastUpdatedString}
+            </p>
             <button onClick={this.refreshData}>Refresh Data</button>
           </div>
           <Router>

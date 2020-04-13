@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 import arrow from "../arrow.svg";
-import { findByLabelText } from "@testing-library/dom";
 
 const LineInfo = props => {
   const tubeLine = props.lineStatuses.find(
